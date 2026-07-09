@@ -283,21 +283,57 @@
             scroll-snap-align: start;
             pointer-events: none; /* Prevents browser image dragging ghosting */
         }
+        .header-logo {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        background: transparent;
+        display: block;
+        }
+        /* --- Add these to your existing style block --- */
+
+/* Container to keep logo and text side-by-side */
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Adjust the logo size specifically for the header */
+.header-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: transparent;
+    display: block;
+}
+
+/* Ensure the logo container and nav links space out correctly */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
     </style>
 </head>
 <body>
 
     <!-- Header / Navigation -->
-    <header>
-        <nav>
+    <header class="site-header">
+    <nav>
+        <!-- Logo and Brand Name container -->
+        <div class="brand-container">
+            <img src="logo.png" alt="Logo" class="header-logo">
             <div class="logo">Melvin<span>.V</span></div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
+        </div>
+        
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+</header>
 
     <!-- Hero / Introduction -->
     <section id="about" class="hero">
