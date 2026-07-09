@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melvin Vergara | IT & Backend Developer Portfolio</title>
+    <style>
+        /* Modern Design System & Reset */
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #4ade80;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Section Layouts */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px 20px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        /* Hero / Intro Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 140px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-blue);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Tech Stack Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-blue);
+        }
+
+        /* Main Projects Architecture */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: #475569;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* Tags and Buttons */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--accent-blue);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--bg-main);
+        }
+
+        /* Hardware Media Section Layout */
+        .media-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            align-items: center;
+        }
+
+        @media (min-width: 900px) {
+            .media-layout {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+
+        /* Native Swipe Slider Container */
+        .slider-container {
+            width: 100%;
+            height: 340px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            user-select: none; /* Prevents selecting images while dragging */
+            cursor: grab;
+            
+            /* Hide system scrollbars */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-container:active {
+            cursor: grabbing;
+        }
+
+        /* Smooth Slidestock Items */
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            pointer-events: none; /* Prevents browser image dragging ghosting */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Melvin<span>.dev</span></div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero / Introduction -->
+    <section id="about" class="hero">
+        <h1>Hi, I'm <span>Melvin Vergara</span>.</h1>
+        <p>I build secure backend automation software, manage system environments, and configure physical hardware architectures.</p>
+    </section>
+
+    <!-- Tech Stack / Skills -->
+    <section id="skills">
+        <h2>Technical Core</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">PHP</div>
+            <div class="skill-tag">Laravel</div>
+            <div class="skill-tag">Git Versioning</div>
+            <div class="skill-tag">Environment Config</div>
+            <div class="skill-tag">SMTP Execution</div>
+            <div class="skill-tag">Hardware Assembly</div>
+        </div>
+    </section>
+
+    <!-- Software & Automation Projects -->
+    <section id="projects">
+        <h2>Featured Software Engineering</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1: Upgraded Mailer Script -->
+            <div class="card">
+                <div>
+                    <h3>Automated SMTP Email Service</h3>
+                    <p>A secure Python backend module built to automate system notifications. Leverages encrypted SSL networking to interface with Gmail's transmission architecture, safely abstracting credentials using environmental variables.</p>
+                    <div class="tags-container">
+                        <span class="tag">Python</span>
+                        <span class="tag">SMTP Secure</span>
+                        <span class="tag">Dotenv</span>
+                        <span class="tag">File I/O</span>
+                    </div>
+                </div>
+                <a href="#" class="btn">Explore Repository</a>
+            </div>
+
+            <!-- Project 2: HTML Mailing Integration -->
+            <div class="card">
+                <div>
+                    <h3>Dynamic HTML Email Engine</h3>
+                    <p>An extension of the core SMTP layout engineered to safely handle file stream manipulation. Dynamically loads responsive web templates from disk and parses rich structural markup into data packets for crisp cross-platform client presentation.</p>
+                    <div class="tags-container">
+                        <span class="tag">HTML5 / CSS3</span>
+                        <span class="tag">Data Streams</span>
+                        <span class="tag">Backend Parsing</span>
+                    </div>
+                </div>
+                <a href="#" class="btn">Explore Code</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Physical Hardware & Maintenance Section -->
+    <section id="hardware">
+        <h2>Hardware & Systems Operations</h2>
+        <div class="media-layout">
+            
+            <!-- Swipable Photo Slider Module -->
+            <div class="slider-container" id="slider">
+                <img src="1.jpg" alt="Hardware Assembly Snapshot 1">
+                <img src="2.jpg" alt="Hardware Assembly Snapshot 2">
+                <img src="3.jpg" alt="Hardware Assembly Snapshot 3">
+            </div>
+
+            <div>
+                <h3>Custom PC Architecture & Optimization</h3>
+                <p>Demonstrated technical competency in direct physical assembly, physical diagnosis, preventative diagnostic cleaning, and strict cable routing management protocols.</p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 25px;">
+                    This engineering log visually benchmarks end-to-end component handling, optimal system thermal tracking, and rigorous hardware assembly methods.
+                </p>
+                <div class="tags-container">
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">System Assembly</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Thermal Routing</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">IT Infrastructure</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JavaScript to enable desktop Mouse Drag-to-Swipe functionality -->
+    <script>
+        const slider = document.getElementById('slider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.style.scrollSnapType = 'none'; // Temporarily disable snapping during tracking
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            if (!isDown) return;
+            isDown = false;
+            slider.style.scrollSnapType = 'x mandatory';
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.style.scrollSnapType = 'x mandatory'; // Re-enable snappy calculations
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
+</body>
+</html>
