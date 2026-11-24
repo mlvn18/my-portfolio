@@ -258,36 +258,62 @@
             }
         }
 
-        .slider-container {
+        .slider-wrapper {
+            position: relative;
             width: 100%;
             height: 340px;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: 100%;
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
+            overflow-x: hidden;
             scroll-behavior: smooth;
             border-radius: 8px;
             border: 1px solid var(--border);
-            user-select: none;
-            cursor: grab;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .slider-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .slider-container:active {
-            cursor: grabbing;
         }
 
         .slider-container img {
-            width: 150%;
+            width: 100%;
             height: 100%;
             object-fit: cover;
             flex-shrink: 0;
-            scroll-snap-align: start;
             cursor: zoom-in;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(15, 23, 42, 0.75);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            z-index: 5;
+        }
+
+        .slider-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--bg-main);
+            border-color: var(--accent-blue);
+        }
+
+        .slider-btn.prev {
+            left: 12px;
+        }
+
+        .slider-btn.next {
+            right: 12px;
         }
 
         .lightbox-modal {
@@ -396,10 +422,14 @@
     <section id="hardware">
         <h2>Hardware & Systems Operations</h2>
         <div class="media-layout">
-            <div class="slider-container">
-                <img src="1.jpg" alt="Hardware Assembly Snapshot 1">
-                <img src="2.jpg" alt="Hardware Assembly Snapshot 2">
-                <img src="3.jpg" alt="Hardware Assembly Snapshot 3">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <img src="1.jpg" alt="Hardware Assembly Snapshot 1">
+                    <img src="2.jpg" alt="Hardware Assembly Snapshot 2">
+                    <img src="3.jpg" alt="Hardware Assembly Snapshot 3">
+                </div>
+                <button type="button" class="slider-btn prev" aria-label="Previous image">&lsaquo;</button>
+                <button type="button" class="slider-btn next" aria-label="Next image">&rsaquo;</button>
             </div>
 
             <div>
@@ -420,11 +450,15 @@
     <section id="software">
         <h2>IT Capstone Project</h2>
         <div class="media-layout">
-            <div class="slider-container">
-                <img src="p1.png" alt="Web Development 1">
-                <img src="p2.png" alt="Web Development 2">
-                <img src="p3.png" alt="Web Development 3">
-                <img src="p4.png" alt="Web Development 4">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <img src="p1.png" alt="Web Development 1">
+                    <img src="p2.png" alt="Web Development 2">
+                    <img src="p3.png" alt="Web Development 3">
+                    <img src="p4.png" alt="Web Development 4">
+                </div>
+                <button type="button" class="slider-btn prev" aria-label="Previous image">&lsaquo;</button>
+                <button type="button" class="slider-btn next" aria-label="Next image">&rsaquo;</button>
             </div>
 
             <div>
@@ -478,48 +512,34 @@
             }
         });
 
-        document.querySelectorAll('.slider-container').forEach((slider) => {
-            let isDown = false;
-            let hasDragged = false;
-            let startX;
-            let scrollLeft;
+        document.querySelectorAll('.slider-wrapper').forEach((wrapper) => {
+            const slider = wrapper.querySelector('.slider-container');
+            const imgs = slider.querySelectorAll('img');
+            const prevBtn = wrapper.querySelector('.slider-btn.prev');
+            const nextBtn = wrapper.querySelector('.slider-btn.next');
+            let currentIndex = 0;
 
-            slider.addEventListener('mousedown', (e) => {
-                isDown = true;
-                hasDragged = false;
-                slider.style.scrollSnapType = 'none';
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
+            function goToSlide(index) {
+                currentIndex = (index + imgs.length) % imgs.length;
+                slider.scrollTo({
+                    left: currentIndex * slider.clientWidth,
+                    behavior: 'smooth'
+                });
+            }
+
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(currentIndex - 1);
             });
 
-            slider.addEventListener('mouseleave', () => {
-                if (!isDown) return;
-                isDown = false;
-                slider.style.scrollSnapType = 'x mandatory';
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToSlide(currentIndex + 1);
             });
 
-            slider.addEventListener('mouseup', () => {
-                if (!isDown) return;
-                isDown = false;
-                slider.style.scrollSnapType = 'x mandatory';
-            });
-
-            slider.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 1.5;
-                if (Math.abs(walk) > 5) {
-                    hasDragged = true;
-                }
-                slider.scrollLeft = scrollLeft - walk;
-            });
-
-            slider.querySelectorAll('img').forEach((img) => {
+            imgs.forEach((img) => {
                 img.addEventListener('click', () => {
-                    if (!hasDragged) {
-                        openLightbox(img);
-                    }
+                    openLightbox(img);
                 });
             });
         });
