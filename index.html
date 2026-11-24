@@ -79,7 +79,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 24px;
         }
 
         nav a {
@@ -125,11 +125,25 @@
             padding-top: 140px;
         }
 
+        .hero-badge {
+            display: inline-block;
+            width: fit-content;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            letter-spacing: 0.4px;
+        }
+
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            line-height: 1.15;
+            margin-bottom: 18px;
         }
 
         .hero h1 span {
@@ -139,13 +153,13 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 30px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
@@ -258,6 +272,40 @@
             }
         }
 
+        .media-layout h3 {
+            font-size: 1.35rem;
+            margin-bottom: 14px;
+            line-height: 1.35;
+        }
+
+        .media-layout p {
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .media-layout code {
+            background-color: rgba(15, 23, 42, 0.8);
+            color: var(--accent-green);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .vm-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: rgba(74, 222, 128, 0.12);
+            color: var(--accent-green);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
         .slider-wrapper {
             position: relative;
             width: 100%;
@@ -365,11 +413,14 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#sysadmin">SysAdmin</a></li>
+                <li><a href="#networking">Networking</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="about" class="hero">
+        <span class="hero-badge">Backend Developer &bull; Systems &amp; Infrastructure Admin</span>
         <h1>Hi, I'm <span>Melvin Vergara</span>.</h1>
         <p>I build secure backend automation software, manage system environments, and configure physical hardware architectures.</p>
     </section>
@@ -384,6 +435,9 @@
             <div class="skill-tag">Environment Config</div>
             <div class="skill-tag">SMTP Execution</div>
             <div class="skill-tag">Hardware Assembly</div>
+            <div class="skill-tag">Active Directory</div>
+            <div class="skill-tag">Windows Server</div>
+            <div class="skill-tag">Cisco Packet Tracer</div>
         </div>
     </section>
 
@@ -415,6 +469,74 @@
                     </div>
                 </div>
                 <a href="#" class="btn">Explore Code</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sysadmin">
+        <h2>Windows Server &amp; Active Directory Lab</h2>
+        <div class="media-layout">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <!-- Replace vm1.png, vm2.png, etc. with your VirtualBox screenshot filenames -->
+                    <img src="vm1.png">
+                    <img src="vm2.png">
+                    <img src="vm3.png">
+                    <img src="vm4.png">
+                    <img src="vm5.png">
+                    <img src="vm6.png">
+                    <img src="vm7.png">
+                </div>
+                <button type="button" class="slider-btn prev" aria-label="Previous image">&lsaquo;</button>
+                <button type="button" class="slider-btn next" aria-label="Next image">&rsaquo;</button>
+            </div>
+
+            <div>
+                <span class="vm-badge">Oracle VM VirtualBox Lab</span>
+                <h3>Active Directory, Group Policy &amp; FSRM Administration</h3>
+                <p>
+                    Configured and tested within an isolated <strong>Oracle VM VirtualBox</strong> server-client environment (<code>MASTER SERVER</code> &amp; <code>MASTER CLIENT</code>). Administered domain services (<code>NCST.edu</code> / <code>VERGARA.NCST.EDU</code>), organized users under Organizational Units (<code>HUMAN RESOURCE</code>), enforced Group Policy client restrictions (disabling Control Panel, PC settings, removable storage, and <code>cmd.exe</code> / <code>gpupdate</code> actions), and deployed live updates via <code>gpupdate /force</code>.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 25px;">
+                    Configured <strong>File Server Resource Manager (FSRM)</strong> active file screening templates and file group rules on shared network paths (<code>C:\File Screen</code> &rarr; <code>\\VERGARA\Z:</code>) to prohibit unauthorized file uploads and verify access denial on client machines.
+                </p>
+                <div class="tags-container">
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Active Directory</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Group Policy (GPO)</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">FSRM File Screening</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">VirtualBox VM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="networking">
+        <h2>Network Simulation &amp; Topologies</h2>
+        <div class="media-layout">
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <!-- Replace pt1.png, pt2.png, etc. with your Cisco Packet Tracer screenshot filenames -->
+                    <img src="pt1.png" alt="Cisco Packet Tracer Network Topology">
+                </div>
+                <button type="button" class="slider-btn prev" aria-label="Previous image">&lsaquo;</button>
+                <button type="button" class="slider-btn next" aria-label="Next image">&rsaquo;</button>
+            </div>
+
+            <div>
+                <span class="vm-badge">Cisco Packet Tracer Simulation</span>
+                <h3>Network Design, Routing &amp; Switching Labs</h3>
+                <p>
+                    Experienced in building, configuring, and troubleshooting simulated network architectures using <strong>Cisco Packet Tracer</strong>. Designed multi-device topologies connecting routers, switches, servers, and end-user workstations.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 25px;">
+                    Configured IPv4 addressing schemes, subnetting, VLAN segmentation, and static/dynamic routing protocols, verifying end-to-end packet flow and network reachability through CLI diagnostics and PDU simulation mode.
+                </p>
+                <div class="tags-container">
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Cisco Packet Tracer</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Routing &amp; Switching</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">IP Subnetting &amp; VLANs</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Network Diagnostics</span>
+                </div>
             </div>
         </div>
     </section>
