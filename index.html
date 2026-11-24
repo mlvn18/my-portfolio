@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Melvin Vergara | IT & Backend Developer Portfolio</title>
     <style>
-        /* Modern Design System & Reset */
         :root {
             --bg-main: #0f172a;
             --bg-card: #1e293b;
@@ -22,6 +21,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-main);
@@ -30,7 +33,6 @@
             padding-bottom: 60px;
         }
 
-        /* Navigation Bar */
         header {
             background-color: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(8px);
@@ -44,10 +46,24 @@
         nav {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 14px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            background: transparent;
+            display: block;
         }
 
         .logo {
@@ -77,7 +93,6 @@
             color: var(--accent-blue);
         }
 
-        /* Section Layouts */
         section {
             max-width: 1100px;
             margin: 0 auto;
@@ -102,7 +117,6 @@
             border-radius: 2px;
         }
 
-        /* Hero / Intro Section */
         .hero {
             min-height: 70vh;
             display: flex;
@@ -129,7 +143,6 @@
             margin-bottom: 30px;
         }
 
-        /* Tech Stack Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -153,7 +166,6 @@
             border-color: var(--accent-blue);
         }
 
-        /* Main Projects Architecture */
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -194,7 +206,6 @@
             font-size: 0.95rem;
         }
 
-        /* Tags and Buttons */
         .tags-container {
             display: flex;
             flex-wrap: wrap;
@@ -230,7 +241,6 @@
             color: var(--bg-main);
         }
 
-        /* Hardware Media Section Layout */
         .media-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -248,7 +258,6 @@
             }
         }
 
-        /* Native Swipe Slider Container */
         .slider-container {
             width: 100%;
             height: 340px;
@@ -258,10 +267,8 @@
             scroll-behavior: smooth;
             border-radius: 8px;
             border: 1px solid var(--border);
-            user-select: none; /* Prevents selecting images while dragging */
+            user-select: none;
             cursor: grab;
-            
-            /* Hide system scrollbars */
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
@@ -274,74 +281,40 @@
             cursor: grabbing;
         }
 
-        /* Smooth Slidestock Items */
         .slider-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             flex-shrink: 0;
             scroll-snap-align: start;
-            pointer-events: none; /* Prevents browser image dragging ghosting */
+            pointer-events: none;
         }
-        .header-logo {
-        width: 90px;
-        height: 90px;
-        object-fit: contain;
-        background: transparent;
-        display: block;
-        }
-        /* --- Add these to your existing style block --- */
-
-/* Container to keep logo and text side-by-side */
-.brand-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* Adjust the logo size specifically for the header */
-.header-logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    background: transparent;
-    display: block;
-}
-
-/* Ensure the logo container and nav links space out correctly */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
     </style>
 </head>
 <body>
 
-    <!-- Header / Navigation -->
     <header class="site-header">
-    <nav>
-        <!-- Logo and Brand Name container -->
-        <div class="brand-container">
-            <img src="logo.png" alt="Logo" class="header-logo">
-            <div class="logo">Melvin<span>.V</span></div>
-        </div>
-        
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
-    </nav>
-</header>
+        <nav>
+            <div class="brand-container">
+                <img src="logo.png" alt="Logo" class="header-logo">
+                <div class="logo">Melvin<span>.V</span></div>
+            </div>
 
-    <!-- Hero / Introduction -->
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#hardware">Hardware</a></li>
+                <li><a href="#software">Capstone</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <section id="about" class="hero">
         <h1>Hi, I'm <span>Melvin Vergara</span>.</h1>
         <p>I build secure backend automation software, manage system environments, and configure physical hardware architectures.</p>
     </section>
 
-    <!-- Tech Stack / Skills -->
     <section id="skills">
         <h2>Technical Core</h2>
         <div class="skills-grid">
@@ -355,12 +328,9 @@ nav {
         </div>
     </section>
 
-    <!-- Software & Automation Projects -->
     <section id="projects">
         <h2>Featured Software Engineering</h2>
         <div class="projects-grid">
-            
-            <!-- Project 1: Upgraded Mailer Script -->
             <div class="card">
                 <div>
                     <h3>Automated SMTP Email Service</h3>
@@ -375,7 +345,6 @@ nav {
                 <a href="#" class="btn">Explore Repository</a>
             </div>
 
-            <!-- Project 2: HTML Mailing Integration -->
             <div class="card">
                 <div>
                     <h3>Dynamic HTML Email Engine</h3>
@@ -388,17 +357,13 @@ nav {
                 </div>
                 <a href="#" class="btn">Explore Code</a>
             </div>
-
         </div>
     </section>
 
-    <!-- Physical Hardware & Maintenance Section -->
     <section id="hardware">
         <h2>Hardware & Systems Operations</h2>
         <div class="media-layout">
-            
-            <!-- Swipable Photo Slider Module -->
-            <div class="slider-container" id="slider">
+            <div class="slider-container">
                 <img src="1.jpg" alt="Hardware Assembly Snapshot 1">
                 <img src="2.jpg" alt="Hardware Assembly Snapshot 2">
                 <img src="3.jpg" alt="Hardware Assembly Snapshot 3">
@@ -416,41 +381,67 @@ nav {
                     <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">IT Infrastructure</span>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- JavaScript to enable desktop Mouse Drag-to-Swipe functionality -->
+    <section id="software">
+        <h2>IT Capstone Project</h2>
+        <div class="media-layout">
+            <div class="slider-container">
+                <img src="p1.png" alt="Web Development 1">
+                <img src="p2.png" alt="Web Development 2">
+                <img src="p3.png" alt="Web Development 3">
+                <img src="p4.png" alt="Web Development 4">
+            </div>
+
+            <div>
+                <h3>IMPLEMENTATION OF A WEB-BASED INTEGRATED MANAGEMENT PLATFORM FOR PHOTOGRAPHERS AND PHOTOGRAPHIC STUDIOS IN CAVITE WITH DECISION SUPPORT SYSTEM, ONLINE GALLERY, AND MOBILE APPLICATION</h3>
+                <p>Developed a Platform where Photographers and Photographic studios can create an account so that customers can just look for their services in 1 platform</p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 25px;">
+                    For Photographers, they should create an account then setup profile so that their freelance account will be visible to customers.
+                    While for photographic studios, the owner should create an account then will need to click "create studio" and pass the requirements. Both users should subscribe to one of our plans to operate their business using our platform.
+                </p>
+                <div class="tags-container">
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Web Development</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Decision Support System</span>
+                    <span class="tag" style="background-color: rgba(74, 222, 128, 0.1); color: var(--accent-green);">Back end Developer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
-        const slider = document.getElementById('slider');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+        document.querySelectorAll('.slider-container').forEach((slider) => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
 
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.style.scrollSnapType = 'none'; // Temporarily disable snapping during tracking
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.style.scrollSnapType = 'none';
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
 
-        slider.addEventListener('mouseleave', () => {
-            if (!isDown) return;
-            isDown = false;
-            slider.style.scrollSnapType = 'x mandatory';
-        });
+            slider.addEventListener('mouseleave', () => {
+                if (!isDown) return;
+                isDown = false;
+                slider.style.scrollSnapType = 'x mandatory';
+            });
 
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.style.scrollSnapType = 'x mandatory'; // Re-enable snappy calculations
-        });
+            slider.addEventListener('mouseup', () => {
+                if (!isDown) return;
+                isDown = false;
+                slider.style.scrollSnapType = 'x mandatory';
+            });
 
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
-            slider.scrollLeft = scrollLeft - walk;
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                slider.scrollLeft = scrollLeft - walk;
+            });
         });
     </script>
 
